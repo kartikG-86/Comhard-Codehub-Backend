@@ -14,4 +14,8 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
+// Models
 app.use("/api/model_details", require("./routes/models"));
+
+// user
+app.use("/api/auth", require("./routes/auth"));
