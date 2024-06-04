@@ -22,7 +22,6 @@ const newUser = async (req, res) => {
   const { email, password, name, role } = req.body;
 
   const user = await UserModel.findOne({ email: email });
-  console.log(user);
 
   if (user) {
     return res.status(400).json({

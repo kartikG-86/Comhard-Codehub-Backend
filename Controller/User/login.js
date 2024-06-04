@@ -5,19 +5,17 @@ require("dotenv").config();
 
 const secret_key = process.env.SECRET_KEY;
 
-console.log(secret_key);
-
 const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
 
-  const user = await UserModel.findOne({ email: email });
+  const user = await UserModel.findOne({ email: email.toLowerCase() });
+  console.log(user);
 
   try {
     if (user) {
       // verify password
-      console.log(user);
       const check = await bcrypt.compare(password, user.password);
-      console.log(check);
       if (check) {
         const data = {
           id: user.id,
@@ -25,7 +23,6 @@ const login = async (req, res) => {
           name: user.name,
           role: user.role,
         };
-        console.log(data);
         const token = jwt.sign(data, secret_key);
         return res.send({
           success: true,
