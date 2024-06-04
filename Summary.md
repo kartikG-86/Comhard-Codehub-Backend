@@ -4,4 +4,4 @@
 * [Getting Started](getting-started.md)
 * [API Reference](./index.js)
 * [Backend Architecture](backend-architecture.md)
-* [Database Schema](database-schema.md)
+* [Database Schema](./db.js)
